@@ -281,6 +281,38 @@ TODO:
 - Testing Strategy (unit/e2e)
 - CI/CD Pipeline
 
+---
+
+## 13. REPLICATION PROMPT (AESTHETICS)
+To replicate the "PunchAi" look (colors and dynamic background effects) in another project, use the following prompt and color values:
+
+### **Color Palette**
+- **Primary Background:** `#0F0C29` (Deep Navy/Dark Purple)
+- **Secondary (Cards/Surfaces):** `#302b63` (Muted Purple)
+- **Accent 1 (Cyan):** `#00F5FF`
+- **Accent 2 (Purple):** `#6C63FF`
+- **Accent 3 (Violet):** `#bf5af2`
+- **Gradients:** `linear-gradient(to right, #6C63FF, #00F5FF)`
+
+### **Dynamic Background Prompt**
+> "Create a futuristic dark-themed UI with a Deep Navy background (`#0F0C29`). Instead of static images, use dynamic background 'blobs' created with large, blurred circles (`blur-[120px]`) in Neon Cyan (`#00F5FF/20`) and Bright Purple (`#6C63FF/20`). Add a slow pulsing animation (`animate-pulse`) to these blobs to make the background feel alive. Use glassmorphism for cards with `backdrop-blur-lg`, `bg-white/5`, and a subtle `white/10` border. Accentuate headings with a text gradient from purple to cyan."
+
+### **Key CSS/Tailwind Techniques**
+- **Glassmorphism:** `bg-white/5 backdrop-blur-lg border border-white/10`
+- **Glow Effects:** `shadow-[0_0_20px_rgba(108,99,255,0.3)]`
+- **Animated Blobs (The "Dynamic Background"):**
+  Instead of a GIF, the background uses absolute-positioned divs with `animate-pulse`, `blur`, and `mix-blend-screen` to create a living gradient effect. Here is the exact JSX structure:
+  ```jsx
+  <div className="absolute inset-0 overflow-hidden">
+    {/* Top Left Blob */}
+    <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-accent-blue/20 blur-[120px] rounded-full mix-blend-screen animate-pulse" />
+    {/* Top Right Blob */}
+    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-purple/20 blur-[100px] rounded-full mix-blend-screen animate-pulse delay-1000" />
+    {/* Bottom Center Blob */}
+    <div className="absolute -bottom-1/2 left-1/2 w-full h-full bg-accent-blue/10 blur-[120px] rounded-full mix-blend-screen animate-pulse delay-2000" />
+  </div>
+  ```
+
 Update policy:
 - When adding new features or modules, append sections here and cross-reference relevant files and configuration.
 
